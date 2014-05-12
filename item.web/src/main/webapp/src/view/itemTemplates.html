@@ -1,0 +1,78 @@
+<script type="text/template" id="itemList">
+    <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <table class="table striped">
+    <thead>
+    <tr>
+		 <th>name</th>
+		 <th>fechaCaducidad</th>
+		 <th>reservado</th>
+		 <th>motivoIngreso</th>
+		 <th>motivoSalid</th>
+		 <th>enBodega</th>
+    <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% _.each(items, function(item) { %>
+    <tr>
+		<td><%= htmlEncode(item.getDisplay('name')) %></td>
+		<td><%= htmlEncode(item.getDisplay('fechaCaducidad')) %></td>
+		<td><%= htmlEncode(item.getDisplay('reservado')) %></td>
+		<td><%= htmlEncode(item.getDisplay('motivoIngreso')) %></td>
+		<td><%= htmlEncode(item.getDisplay('motivoSalid')) %></td>
+		<td><%= htmlEncode(item.getDisplay('enBodega')) %></td>
+    <td>
+    <% if(showEdit) {%>
+    <a onclick="Backbone.trigger('<%= componentId %>-item-edit',{id:<%= item.id %>}); return false" >Edit</a> |
+	<% } %> 
+	<% if(showDelete) {%>
+    <a onclick="Backbone.trigger('<%= componentId %>-item-delete',{id:<%= item.id %>}); return false" >Delete</a> 
+	<% } %>    
+	</td>
+    </tr>
+    <% }); %>
+    </tbody>
+    </table>
+    </div>
+</script>
+
+<script type="text/template" id="item">
+    <div class="form-group">
+    <form role="form" id="<%= componentId %>-itemForm">
+    <% if(item.id) {%>
+    <input type="hidden" name="id" value="<%= item.id %>"/>
+    <% }%>
+		<div class="form-group" >
+		<label for="name">name</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= item.get('name') %>"/>	
+		</div>
+		<div class="form-group" >
+			<label for="fechaCaducidad">fechaCaducidad</label>
+    		<input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaCaducidad"  name="fechaCaducidad" placeholder="Enter value" />
+    		<%= '<scr'+'ipt>' %>
+        	$('#fechaCaducidad').datepicker({autoclose:true});
+        	$('#fechaCaducidad').datepicker('setDate',new Date(<%= item.get('fechaCaducidad') %>));
+    		<%= '</scr'+'ipt>' %>
+		</div>
+		<div class="form-group" >
+	    <label>
+    	  <input id="reservado" name="reservado" value="true" type="checkbox" <%= item.get('reservado')?'checked':'' %>> reservado
+    	</label>
+		</div>
+		<div class="form-group" >
+		<label for="motivoIngreso">motivoIngreso</label>
+    	<input type="text" class="form-control" id="motivoIngreso" name="motivoIngreso" placeholder="Enter value" value="<%= item.get('motivoIngreso') %>"/>	
+		</div>
+		<div class="form-group" >
+		<label for="motivoSalid">motivoSalid</label>
+    	<input type="text" class="form-control" id="motivoSalid" name="motivoSalid" placeholder="Enter value" value="<%= item.get('motivoSalid') %>"/>	
+		</div>
+		<div class="form-group" >
+	    <label>
+    	  <input id="enBodega" name="enBodega" value="true" type="checkbox" <%= item.get('enBodega')?'checked':'' %>> enBodega
+    	</label>
+		</div>
+    </form>
+    </div>
+</script> 

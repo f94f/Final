@@ -1,0 +1,9 @@
+{
+    "displayName" : "OrdenFabricacion",
+    "name" : "ordenFabricacion",
+    "templateName" : "ordenFabricacion",
+    "url" : "user.html",
+    "server": "localhost:8080",
+    "context": "/ordenfabricacion.service.subsystem.web/webresources/OrdenFabricacion",
+    "el" : "#main"
+}

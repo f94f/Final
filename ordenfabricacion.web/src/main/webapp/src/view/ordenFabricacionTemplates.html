@@ -1,0 +1,64 @@
+<script type="text/template" id="ordenFabricacionList">
+    <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <table class="table striped">
+    <thead>
+    <tr>
+		 <th>name</th>
+		 <th>fecha</th>
+		 <th>cantidad</th>
+		 <th>estado</th>
+    <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% _.each(ordenFabricacions, function(ordenFabricacion) { %>
+    <tr>
+		<td><%= htmlEncode(ordenFabricacion.getDisplay('name')) %></td>
+		<td><%= htmlEncode(ordenFabricacion.getDisplay('fecha')) %></td>
+		<td><%= htmlEncode(ordenFabricacion.getDisplay('cantidad')) %></td>
+		<td><%= htmlEncode(ordenFabricacion.getDisplay('estado')) %></td>
+    <td>
+    <% if(showEdit) {%>
+    <a onclick="Backbone.trigger('<%= componentId %>-ordenFabricacion-edit',{id:<%= ordenFabricacion.id %>}); return false" >Edit</a> |
+	<% } %> 
+	<% if(showDelete) {%>
+    <a onclick="Backbone.trigger('<%= componentId %>-ordenFabricacion-delete',{id:<%= ordenFabricacion.id %>}); return false" >Delete</a> 
+	<% } %>    
+	</td>
+    </tr>
+    <% }); %>
+    </tbody>
+    </table>
+    </div>
+</script>
+
+<script type="text/template" id="ordenFabricacion">
+    <div class="form-group">
+    <form role="form" id="<%= componentId %>-ordenFabricacionForm">
+    <% if(ordenFabricacion.id) {%>
+    <input type="hidden" name="id" value="<%= ordenFabricacion.id %>"/>
+    <% }%>
+		<div class="form-group" >
+		<label for="name">name</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= ordenFabricacion.get('name') %>"/>	
+		</div>
+		<div class="form-group" >
+			<label for="fecha">fecha</label>
+    		<input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fecha"  name="fecha" placeholder="Enter value" />
+    		<%= '<scr'+'ipt>' %>
+        	$('#fecha').datepicker({autoclose:true});
+        	$('#fecha').datepicker('setDate',new Date(<%= ordenFabricacion.get('fecha') %>));
+    		<%= '</scr'+'ipt>' %>
+		</div>
+		<div class="form-group" >
+		<label for="cantidad">cantidad</label>
+    	<input type="text" class="form-control" id="cantidad" name="cantidad" placeholder="Enter value" value="<%= ordenFabricacion.get('cantidad') %>"/>	
+		</div>
+		<div class="form-group" >
+		<label for="estado">estado</label>
+    	<input type="text" class="form-control" id="estado" name="estado" placeholder="Enter value" value="<%= ordenFabricacion.get('estado') %>"/>	
+		</div>
+    </form>
+    </div>
+</script> 

@@ -1,0 +1,9 @@
+{
+    "displayName" : "OrdenReaprovicionamiento",
+    "name" : "ordenreaprovicionamiento",
+    "templateName" : "ordenreaprovicionamiento",
+    "url" : "ordenreaprovicionamiento.html",
+    "server": "localhost:8080",
+    "context": "/ordenreaprovicionamiento.master.service.subsystem/webresources/OrdenReaprovicionamientoMaster",
+    "el" : "#main"
+}

@@ -1,0 +1,9 @@
+{
+    "displayName" : "OrdenDespacho",
+    "name" : "ordendespacho",
+    "templateName" : "ordendespacho",
+    "url" : "ordendespacho.html",
+    "server": "localhost:8080",
+    "context": "/ordendespacho.master.service.subsystem/webresources/OrdenDespachoMaster",
+    "el" : "#main"
+}

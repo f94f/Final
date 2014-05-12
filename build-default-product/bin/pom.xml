@@ -1,0 +1,35 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>co.edu.uniandes.csw.spl</groupId>
+  <artifactId>build-default-product</artifactId>
+  <version>1.0</version>
+  <packaging>pom</packaging>
+  <name>build-default-product</name>
+    <modules>
+    	  <module>../proveedor.web</module>
+    	  <module>../proveedor.service.subsystem</module>
+		  <module>../proveedor.service.subsystem.web</module>
+    	  <module>../factura.web</module>
+    	  <module>../factura.service.subsystem</module>
+		  <module>../factura.service.subsystem.web</module>
+    	  <module>../ordenreaprovicionamiento.web</module>
+    	  <module>../ordenreaprovicionamiento.service.subsystem</module>
+		  <module>../ordenreaprovicionamiento.service.subsystem.web</module>
+    	  <module>../ordenfabricacion.web</module>
+    	  <module>../ordenfabricacion.service.subsystem</module>
+		  <module>../ordenfabricacion.service.subsystem.web</module>
+    	  <module>../ordendespacho.web</module>
+    	  <module>../ordendespacho.service.subsystem</module>
+		  <module>../ordendespacho.service.subsystem.web</module>
+    	  <module>../producto.web</module>
+    	  <module>../producto.service.subsystem</module>
+		  <module>../producto.service.subsystem.web</module>
+    	  <module>../item.web</module>
+    	  <module>../item.service.subsystem</module>
+		  <module>../item.service.subsystem.web</module>
+    	  <module>../inventario.web</module>
+    	  <module>../inventario.service.subsystem</module>
+		  <module>../inventario.service.subsystem.web</module>
+    </modules>
+</project>

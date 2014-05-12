@@ -1,0 +1,42 @@
+<script type="text/template" id="facturaList">
+    <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <table class="table striped">
+    <thead>
+    <tr>
+		 <th>name</th>
+    <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% _.each(facturas, function(factura) { %>
+    <tr>
+		<td><%= htmlEncode(factura.getDisplay('name')) %></td>
+    <td>
+    <% if(showEdit) {%>
+    <a onclick="Backbone.trigger('<%= componentId %>-factura-edit',{id:<%= factura.id %>}); return false" >Edit</a> |
+	<% } %> 
+	<% if(showDelete) {%>
+    <a onclick="Backbone.trigger('<%= componentId %>-factura-delete',{id:<%= factura.id %>}); return false" >Delete</a> 
+	<% } %>    
+	</td>
+    </tr>
+    <% }); %>
+    </tbody>
+    </table>
+    </div>
+</script>
+
+<script type="text/template" id="factura">
+    <div class="form-group">
+    <form role="form" id="<%= componentId %>-facturaForm">
+    <% if(factura.id) {%>
+    <input type="hidden" name="id" value="<%= factura.id %>"/>
+    <% }%>
+		<div class="form-group" >
+		<label for="name">name</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= factura.get('name') %>"/>	
+		</div>
+    </form>
+    </div>
+</script> 

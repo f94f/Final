@@ -1,0 +1,58 @@
+<script type="text/template" id="ordenReaprovicionamientoList">
+    <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <table class="table striped">
+    <thead>
+    <tr>
+		 <th>name</th>
+		 <th>fecha</th>
+		 <th>cantidad</th>
+    <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% _.each(ordenReaprovicionamientos, function(ordenReaprovicionamiento) { %>
+    <tr>
+		<td><%= htmlEncode(ordenReaprovicionamiento.getDisplay('name')) %></td>
+		<td><%= htmlEncode(ordenReaprovicionamiento.getDisplay('fecha')) %></td>
+		<td><%= htmlEncode(ordenReaprovicionamiento.getDisplay('cantidad')) %></td>
+    <td>
+    <% if(showEdit) {%>
+    <a onclick="Backbone.trigger('<%= componentId %>-ordenReaprovicionamiento-edit',{id:<%= ordenReaprovicionamiento.id %>}); return false" >Edit</a> |
+	<% } %> 
+	<% if(showDelete) {%>
+    <a onclick="Backbone.trigger('<%= componentId %>-ordenReaprovicionamiento-delete',{id:<%= ordenReaprovicionamiento.id %>}); return false" >Delete</a> 
+	<% } %>    
+	</td>
+    </tr>
+    <% }); %>
+    </tbody>
+    </table>
+    </div>
+</script>
+
+<script type="text/template" id="ordenReaprovicionamiento">
+    <div class="form-group">
+    <form role="form" id="<%= componentId %>-ordenReaprovicionamientoForm">
+    <% if(ordenReaprovicionamiento.id) {%>
+    <input type="hidden" name="id" value="<%= ordenReaprovicionamiento.id %>"/>
+    <% }%>
+		<div class="form-group" >
+		<label for="name">name</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= ordenReaprovicionamiento.get('name') %>"/>	
+		</div>
+		<div class="form-group" >
+			<label for="fecha">fecha</label>
+    		<input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fecha"  name="fecha" placeholder="Enter value" />
+    		<%= '<scr'+'ipt>' %>
+        	$('#fecha').datepicker({autoclose:true});
+        	$('#fecha').datepicker('setDate',new Date(<%= ordenReaprovicionamiento.get('fecha') %>));
+    		<%= '</scr'+'ipt>' %>
+		</div>
+		<div class="form-group" >
+		<label for="cantidad">cantidad</label>
+    	<input type="text" class="form-control" id="cantidad" name="cantidad" placeholder="Enter value" value="<%= ordenReaprovicionamiento.get('cantidad') %>"/>	
+		</div>
+    </form>
+    </div>
+</script> 

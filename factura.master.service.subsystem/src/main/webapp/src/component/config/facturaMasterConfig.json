@@ -1,0 +1,9 @@
+{
+    "displayName" : "Factura",
+    "name" : "factura",
+    "templateName" : "factura",
+    "url" : "factura.html",
+    "server": "localhost:8080",
+    "context": "/factura.master.service.subsystem/webresources/FacturaMaster",
+    "el" : "#main"
+}
